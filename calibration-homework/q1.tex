@@ -1,1 +1,42 @@
 %question file
+\subsection*{Part 1}
+Let $g(n)$ a non-negative integer function such that $g(n) \notin O(f(n))$. Then for all $C > 0$, and all $n_0 > 0$, there exists an $n$ such that :
+\begin{align*}
+g(n) & \geq C f(n) \\
+g(n) + f(n) & \geq (C+1) f(n) \\
+g(n) + f(n) & \notin O(f(n))
+\end{align*}
+
+\subsection*{Part 2}
+Trivially we have $g(n) \in O(f(n))$ and since $f(n) \in O(g(n))$, by the law of summation of functions we have $g(n) + f(n) \in O(g(n))$. 
+
+\subsection*{Part 3}
+Given that $f(n) \in O(g(n))$, there exists $C,n_0 > 0$ such that, for all $n \geq n_0$ :
+\begin{align*}
+f(n) & \geq C g(n) \\
+f(n_0) + f(n) & \geq C (g(n_0) + g(n)) \text{  , since $f(n_0) \geq C g(n_0)$} \\
+f(n) & \geq C g(n_0) - f(n_0) + C g(n) \\
+\end{align*}
+Let $k = C g(n_0) - f(n_0)$, then :
+
+\begin{align*}
+f(n) & \geq k g(n) \\
+2^{f(n)} & \geq 2^k 2^{g(n)} \\
+2^{f(n)} & \in O(2^{g(n)})
+\end{align*}
+
+\subsection*{Part 4}
+Given that $f(n) \in O(g(n))$, there exists $C,n_0 > 0$ such that, for all $n \geq n_0$ :
+\begin{align*}
+f(n) & \geq C g(n) \\
+f(n)g(n) & \geq C g^2(n) \\
+f(n)g(n) & \in O(g^2(n)) 
+\end{align*}
+
+\subsection*{Part 5}
+Let $N = n^2$. Given that $f(n) \in O(g(n))$, there exists $C,n_0 > 0$ such that, for all $N \geq n_0^2$ :
+\begin{align*}
+f(N) & \geq C g(N) \\
+f(n^2) & \geq C g^2(n) \\
+f(n^2) & \in O(g(n^2)) 
+\end{align*}
