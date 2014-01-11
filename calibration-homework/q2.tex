@@ -1,30 +1,20 @@
-
-
 \begin{algorithm}[H]
 \SetAlgoLined
 \KwIn{An array $A=[1 \dots N]$}
-$S \gets $ empty ordered set\\
+$S \gets $ an empty stack \\
 $Solution \gets $ empty array of size $N$ \\
-\ForEach{$i$ in $N, \dots, 1$}{
-$idx \gets orderedAdd(i,S)$ \\
-\If{$S[idx+1]$ exists}{
- $Solution[i] \gets S[idx+1]$
-}\Else{
- $Solution[i] \gets NIL$
+\ForEach{$i$ in $1, \dots, N-1$}{
+push $A[i]$ onto $S$ \\
+$j \gets i$ \\
+\While{$S.peek() > A[i+1]$}{
+  $S.pop()$ \\
+  Solution[j] = A[i+1] \\
+  $j \gets j-1$
 }
-\Return $Solution$
-} 
+}
+$Solution[N] = NIL$ \\
+\Return Solution
 \caption{Next Larger Integer}
 \end{algorithm}
 
-where the following procedures :
-\begin{itemize}
-\item{$orderedAdd(i,S)$ : this procedure adds an element $i$ to an ordered set $S$ such that the set remains ordered, and returns an index of the newly added element in the set. This can be done using binary search in $O(log(n))$.}
-\item{Assuming that reading/writing an element of an ordered set given an index is $O(1)$, the complexity of the If loop of the algorithm is $O(1)$.}
-\end{itemize}
-
-The complexity can be determined as follows : 
-\begin{align*}
-Time & = Line3Loop \times (orderedAdd + IfStatement ) \\ 
-& = N \times ( log(N) + 1) \in O(N log(N)) 
-\end{align*}
+Given that the stack can pushed onto $N$ times, the maximal number of pop operations (see line 7) is $N$ as well. As a result, the algorithm has a complexity of $O(N)$.
